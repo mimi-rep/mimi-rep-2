@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For my Valentine</title>
+  <link href="styles.css" rel="stylesheet">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <h1 class="text"></h1>
+  <div class="envlope-wrapper">
+    <div id="envelope" class="close">
+      <div class="front flap"></div>
+      <div class="front pocket"></div>
+      <div class="letter">
+        <div class="words line1"></div>
+        <div class="words line2"></div>
+        <div class="words line3"></div>
+        <div class="words line4"></div>
+      </div>
+      <div class="hearts">
+        <div class="heart a1"></div>
+        <div class="heart a2"></div>
+        <div class="heart a3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="reset">
+    <button id="open">Open</button>
+    <button id="reset">Reset</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const envelope = document.getElementById("envelope");
+  const openButton = document.getElementById("open");
+  const resetButton = document.getElementById("reset");
+  let redirectTimeout; // Variable to store the timeout
+
+  function openEnvelope() {
+    envelope.classList.remove("close");
+    envelope.classList.add("open");
+
+    // Start a 5-second timer for redirection
+    redirectTimeout = setTimeout(() => {
+      window.location.href = "message.html"; // Change this to your desired page
+    }, 5000);
+  }
+
+  function resetEnvelope() {
+    envelope.classList.remove("open");
+    envelope.classList.add("close");
+
+    // Cancel the timeout if reset is clicked
+    clearTimeout(redirectTimeout);
+  }
+
+  // Open when clicking the button or the envelope
+  openButton.addEventListener("click", openEnvelope);
+  envelope.addEventListener("click", openEnvelope);
+
+  // Reset when clicking the reset button
+  resetButton.addEventListener("click", resetEnvelope);
+});
+  </script>
+</body>
+
+</html>
